@@ -1,4 +1,10 @@
-;;; init-cmp.el --- Initialize completion configurations.
+;;; init-cmp.el --- Description -*- lexical-binding: t; -*-
+;;
+;;; Commentary:
+;;
+;;  Description
+;;
+;;; Code:
 
 ;; Enable corfu
 (use-package corfu
@@ -14,7 +20,7 @@
 
 ;; Enable cape
 (use-package cape
-    :commands (cape-file cape-elisp-block cape-keyword cape-elisp-symbol cape-dabbrev)
+  :commands (cape-file cape-elisp-block cape-keyword cape-elisp-symbol cape-dabbrev)
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
@@ -24,7 +30,7 @@
 
 ;; Enable vertico
 (use-package vertico
-    :custom
+  :custom
   (vertico-count 15)
   :bind (:map vertico-map
 	      ("RET" . vertico-directory-enter)
@@ -35,7 +41,7 @@
 
 ;; Enable marginalia
 (use-package marginalia
-    :hook (after-init . marginalia-mode))
+  :hook (after-init . marginalia-mode))
 
 ;; Enable consult
 ;; TODO
@@ -50,15 +56,15 @@
 
 ;; Enabke embark
 (use-package embark
-    :bind (("C-." . embark-act)
-	   ("C-;" . embark-dwim)
-	   ("C-h B" . embark-bindings))
-    :init
-    (setq prefix-help-command #'embark-prefix-help-command))
+  :bind (("C-." . embark-act)
+	 ("C-;" . embark-dwim)
+	 ("C-h B" . embark-bindings))
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command))
 
 ;; Emacs utils
 (use-package emacs
-    :custom
+  :custom
   (context-menu-mode t)
   (enable-recursive-minibuffers t)
   (read-extended-command-predicate #'command-completion-default-include-p)
@@ -66,3 +72,4 @@
    '(read-only t cursor-intangible t face minibuffer-prompt)))
 
 (provide 'init-cmp)
+;;; init-cmp.el ends here

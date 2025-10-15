@@ -7,7 +7,6 @@
 ;; Created: 十月 13, 2025
 ;; Modified: 十月 13, 2025
 ;; Version: 0.0.1
-;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
 ;; Homepage: https://github.com/god464/emacs
 ;; Package-Requires: ((emacs "30.2"))
 ;;
@@ -26,21 +25,27 @@
 (global-hl-line-mode 1)
 (show-paren-mode 1)
 
-(require 'package)
-(setq package-archives '(("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-                         ("nognu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nognu/")
 
-                         ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
-
-
-(package-initialize)
-
-(require 'use-package)
-(setq use-package-always-ensure t)
-
-(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file 'no-error 'no-message)
 

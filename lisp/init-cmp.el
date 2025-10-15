@@ -15,7 +15,7 @@
   (corfu-cycle t)
   (corfu-quit-at-boundary 'separator)
   (corfu-quit-no-match t)
-  :init
+  :config
   (global-corfu-mode))
 
 ;; Enable cape
@@ -36,7 +36,7 @@
 	      ("RET" . vertico-directory-enter)
 	      ("DEL" . vertico-directory-delete-char)
 	      ("M-DEL" . vertico-directory-delete-word))
-  :init
+  :config
   (vertico-mode t))
 
 ;; Enable marginalia

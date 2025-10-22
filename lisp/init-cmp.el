@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Enable corfu
-(use-package corfu
+(elpaca corfu
   :custom
   (corfu-auto t)
   (corfu-auto-prefix 2)
@@ -19,7 +19,7 @@
   (global-corfu-mode))
 
 ;; Enable cape
-(use-package cape
+(elpaca cape
   :commands (cape-file cape-elisp-block cape-keyword cape-elisp-symbol cape-dabbrev)
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)
@@ -29,7 +29,7 @@
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
 ;; Enable vertico
-(use-package vertico
+(elpaca vertico
   :custom
   (vertico-count 15)
   :bind (:map vertico-map
@@ -40,14 +40,14 @@
   (vertico-mode t))
 
 ;; Enable marginalia
-(use-package marginalia
+(elpaca marginalia
   :hook (after-init . marginalia-mode))
 
 ;; Enable consult
 ;; TODO
 
 ;; Enable orderless
-(use-package orderless
+(elpaca orderless
   :custom
   (completion-styles '(orderless basic))
   (completion-category-defaults nil)
@@ -55,7 +55,7 @@
   (orderless-component-separator #'orderless-escapable-split-on-space))
 
 ;; Enabke embark
-(use-package embark
+(elpaca embark
   :bind (("C-." . embark-act)
 	 ("C-;" . embark-dwim)
 	 ("C-h B" . embark-bindings))

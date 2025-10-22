@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Enable lispy
-(use-package lispy
+(elpaca lispy
   :hook ((lisp-mode . lispy-mode)
 	 (emacs-lisp-mode . lisp-mode))
   :init (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
